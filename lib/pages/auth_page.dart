@@ -18,16 +18,14 @@ class _AuthPageState extends State<AuthPage> {
 
       if (formData.isLogin) {
         //Login
-
       } else {
         //Signup
       }
-    } catch(error) {
+    } catch (error) {
       //Tratar erro
     } finally {
       setState(() => _isLoading = false);
     }
-
   }
 
   @override
@@ -43,7 +41,8 @@ class _AuthPageState extends State<AuthPage> {
           ),
           if (_isLoading)
             Container(
-              decoration: const BoxDecoration(color: Color.fromRGBO(0, 0, 0, 0.5)),
+              decoration:
+                  const BoxDecoration(color: Color.fromRGBO(0, 0, 0, 0.5)),
               child: const Center(
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.white),

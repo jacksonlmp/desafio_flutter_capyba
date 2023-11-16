@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:desafio_flutter_capyba/components/user_image_picker.dart';
 import 'package:desafio_flutter_capyba/models/auth_form_data.dart';
 import 'package:flutter/material.dart';
 
@@ -12,11 +15,26 @@ class AuthForm extends StatefulWidget {
 
 class _AuthFormState extends State<AuthForm> {
   final _formKey = GlobalKey<FormState>();
-  final _formData = AuthFormData();
+  var _formData = AuthFormData();
+
+  void _handleImagePick(File image) {
+    _formData = image as AuthFormData;
+  }
+
+  void _showError(String msg) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(msg),
+      backgroundColor: Theme.of(context).colorScheme.error,
+    ));
+  }
 
   void _submit() {
     final isValid = _formKey.currentState?.validate() ?? false;
     if (!isValid) return;
+
+    if (_formData.image == null && _formData.isSignUp) {
+      return _showError('Imagem não selecionada!');
+    }
 
     widget.onSubmit(_formData);
   }
@@ -31,13 +49,18 @@ class _AuthFormState extends State<AuthForm> {
           key: _formKey,
           child: Column(
             children: [
-              const Text(
-                'Desafio\nCapyba',
-                style: TextStyle(
-                    color: Color.fromARGB(255, 133, 236, 137),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 50),
-              ),
+              if (_formData.isLogin)
+                const Text(
+                  'Desafio\nCapyba',
+                  style: TextStyle(
+                      color: Colors.green,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 50),
+                ),
+              if (_formData.isSignUp)
+                UserImagePicker(
+                  onImagePick: _handleImagePick,
+                ),
               if (_formData.isSignUp)
                 TextFormField(
                   key: const ValueKey('name'),
@@ -83,8 +106,7 @@ class _AuthFormState extends State<AuthForm> {
               ElevatedButton(
                 onPressed: _submit,
                 style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(
-                        Color.fromARGB(255, 133, 236, 137))),
+                    backgroundColor: MaterialStatePropertyAll(Colors.green)),
                 child: Text(
                   _formData.isLogin ? 'Entrar' : 'Cadastrar',
                   style: const TextStyle(color: Colors.white),
