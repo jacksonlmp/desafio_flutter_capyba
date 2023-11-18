@@ -15,10 +15,10 @@ class AuthForm extends StatefulWidget {
 
 class _AuthFormState extends State<AuthForm> {
   final _formKey = GlobalKey<FormState>();
-  var _formData = AuthFormData();
+  final _formData = AuthFormData();
 
   void _handleImagePick(File image) {
-    _formData = image as AuthFormData;
+    _formData.image = image;
   }
 
   void _showError(String msg) {

@@ -1,29 +1,54 @@
 import 'dart:io';
 import 'dart:async';
+import 'dart:math';
 
 import 'package:desafio_flutter_capyba/core/models/user_atributes.dart';
 import 'package:desafio_flutter_capyba/core/services/auth/auth_service.dart';
 
 class AuthMockService implements AuthService {
-  static Map<String, UserAtributes> _users = {};
+  static const _defaultUser = UserAtributes(
+    id: '1',
+    name: 'Teste',
+    email: 'Teste@gmail.com',
+    imageURL: 'assets/images/avatar.png',
+  );
+
+  static final Map<String, UserAtributes> _users = {
+    _defaultUser.email: _defaultUser,
+  };
   static UserAtributes? _currentUser;
   static MultiStreamController<UserAtributes?>? _controller;
   static final _userStream = Stream<UserAtributes?>.multi((controller) {
     _controller = controller;
-    _updateUser(null);
+    _updateUser(_defaultUser);
   });
 
-  Stream<UserAtributes?> get currentUser {
+  @override
+  UserAtributes? get currentUser {
+    return _currentUser;
+  }
+
+  @override
+  Stream<UserAtributes?> get userChanges {
     return _userStream;
   }
 
   @override
-  Stream<UserAtributes?> get userChanges {}
-
-  @override
   Future<void> signup(
-      String nome, String email, String password, File image) async {
-        
+    String name,
+    String email,
+    String password,
+    File? image,
+  ) async {
+    final newUser = UserAtributes(
+      id: Random().nextDouble().toString(),
+      name: name,
+      email: email,
+      imageURL: image?.path ?? 'assets/images/avatar.png',
+    );
+
+    _users.putIfAbsent(email, () => newUser);
+    _updateUser(newUser);
   }
 
   @override

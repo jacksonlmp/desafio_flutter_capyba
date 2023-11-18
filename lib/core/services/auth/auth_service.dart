@@ -7,10 +7,10 @@ abstract class AuthService {
   Stream<UserAtributes?> get userChanges;
 
   Future<void> signup(
-    String nome,
+    String name,
     String email,
     String password,
-    File image,
+    File? image,
   );
 
   Future<void> login(
