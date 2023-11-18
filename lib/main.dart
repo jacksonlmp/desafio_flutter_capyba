@@ -1,3 +1,4 @@
+import 'package:desafio_flutter_capyba/pages/auth_or_app_page.dart';
 import 'package:desafio_flutter_capyba/pages/auth_page.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const AuthPage(),
+      home: const AuthOrAppPage(),
       debugShowCheckedModeBanner: false,
     );
   }
