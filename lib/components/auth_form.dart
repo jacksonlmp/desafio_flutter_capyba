@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:desafio_flutter_capyba/components/user_image_picker.dart';
-import 'package:desafio_flutter_capyba/models/auth_form_data.dart';
+import 'package:desafio_flutter_capyba/core/models/auth_form_data.dart';
 import 'package:flutter/material.dart';
 
 class AuthForm extends StatefulWidget {

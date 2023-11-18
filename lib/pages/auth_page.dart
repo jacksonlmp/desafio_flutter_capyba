@@ -1,5 +1,5 @@
 import 'package:desafio_flutter_capyba/components/auth_form.dart';
-import 'package:desafio_flutter_capyba/models/auth_form_data.dart';
+import 'package:desafio_flutter_capyba/core/models/auth_form_data.dart';
 import 'package:flutter/material.dart';
 
 class AuthPage extends StatefulWidget {
