@@ -1,5 +1,5 @@
 import 'package:desafio_flutter_capyba/core/models/user_atributes.dart';
-import 'package:desafio_flutter_capyba/core/services/auth/auth_mock_service.dart';
+import 'package:desafio_flutter_capyba/core/services/auth/auth_service.dart';
 import 'package:desafio_flutter_capyba/pages/auth_page.dart';
 import 'package:desafio_flutter_capyba/pages/home_page.dart';
 import 'package:desafio_flutter_capyba/pages/loading_page.dart';
@@ -17,12 +17,12 @@ class _AuthOrAppPageState extends State<AuthOrAppPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: StreamBuilder<UserAtributes?>(
-        stream: AuthMockService().userChanges,
+        stream: AuthService().userChanges,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const LoadingPage();
           } else {
-            return snapshot.hasData ? const HomePage() : const AuthPage();
+            return snapshot.hasData ? HomePage() : const AuthPage();
           }
         },
       ),

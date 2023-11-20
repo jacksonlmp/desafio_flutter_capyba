@@ -1,5 +1,5 @@
-import 'package:desafio_flutter_capyba/core/services/auth/auth_mock_service.dart';
 import 'package:flutter/material.dart';
+import 'package:desafio_flutter_capyba/pages/navbar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -7,19 +7,18 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text('Home page'),
-            TextButton(
-              onPressed: () {
-                AuthMockService().logout();
-              },
-              child: const Text('Logout'),
-            ),
-          ],
+      appBar: AppBar(
+        title: const Text(
+          'Desafio Capyba',
+          style: TextStyle(
+            color: Colors.green,
+            fontWeight: FontWeight.w600,
+          ),
         ),
+      ),
+      drawer: NavBar(),
+      body: const Center(
+        child: Text('Conteúdo da Homepage'),
       ),
     );
   }
