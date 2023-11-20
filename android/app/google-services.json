@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "102162109089",
+    "project_id": "desafio-capyba-e02a6",
+    "storage_bucket": "desafio-capyba-e02a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:102162109089:android:af4a6d7c89350250ba56e0",
+        "android_client_info": {
+          "package_name": "br.com.desafiocapyba"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVQyL3CmB4EJ-DOl80is8Zaq1L80jODeY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
