@@ -22,7 +22,7 @@ class _AuthOrAppPageState extends State<AuthOrAppPage> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const LoadingPage();
           } else {
-            return snapshot.hasData ? const HomePage() : const AuthPage();
+            return snapshot.hasData ? HomePage() : const AuthPage();
           }
         },
       ),
