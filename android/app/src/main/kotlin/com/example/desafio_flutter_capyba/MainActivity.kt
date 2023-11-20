@@ -1,4 +1,4 @@
-package com.example.desafio_flutter_capyba
+package com.br.desafiocapyba
 
 import io.flutter.embedding.android.FlutterActivity
 
