@@ -54,12 +54,11 @@ class _AuthPageState extends State<AuthPage> {
           ),
           if (_isLoading)
             Container(
-              decoration:
-                  const BoxDecoration(color: Color.fromRGBO(0, 0, 0, 0.5)),
+              decoration: const BoxDecoration(
+                color: Color.fromRGBO(0, 0, 0, 0.5),
+              ),
               child: const Center(
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                ),
+                child: CircularProgressIndicator(),
               ),
             ),
         ],

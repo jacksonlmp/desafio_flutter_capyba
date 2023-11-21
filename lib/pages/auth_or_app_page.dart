@@ -10,20 +10,24 @@ class AuthOrAppPage extends StatelessWidget {
   const AuthOrAppPage({super.key});
 
   Future<void> init(BuildContext context) async {
-    await Firebase.initializeApp();
+    try {
+      await Firebase.initializeApp();
+    } catch (e) {
+      print('Erro ao inicilizar Firebase');
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: init(context),
-      builder: (ctx, snapshot) {
+      builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const LoadingPage();
         } else {
           return StreamBuilder<UserAtributes?>(
             stream: AuthService().userChanges,
-            builder: (ctx, snapshot) {
+            builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const LoadingPage();
               } else {

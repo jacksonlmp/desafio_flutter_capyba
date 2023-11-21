@@ -35,21 +35,25 @@ class AuthFirebaseService implements AuthService {
     String password,
     File? image,
   ) async {
-    final auth = FirebaseAuth.instance;
-    UserCredential credential = await auth.createUserWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
+    try {
+      final auth = FirebaseAuth.instance;
+      UserCredential credential = await auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
 
-    if (credential.user == null) return;
+      if (credential.user == null) return;
 
-    //Upload foto usuario
-    final imageName = '${credential.user!.uid}.jpg';
-    final imageURL = await _uploadUserImage(image, imageName);
+      //Upload foto usuario
+      final imageName = '${credential.user!.uid}.jpg';
+      final imageURL = await _uploadUserImage(image, imageName);
 
-    //Atualiza atributos do usuário
-    credential.user?.updateDisplayName(name);
-    credential.user?.updatePhotoURL(imageURL);
+      //Atualiza atributos do usuário
+      await credential.user?.updateDisplayName(name);
+      await credential.user?.updatePhotoURL(imageURL);
+    } catch (e) {
+      return null;
+    }
   }
 
   @override
@@ -70,7 +74,7 @@ class AuthFirebaseService implements AuthService {
 
     final storage = FirebaseStorage.instance;
     final imageRef = storage.ref().child('user_images').child(imageName);
-    imageRef.putFile(image).whenComplete(() {});
+    await imageRef.putFile(image);
     return await imageRef.getDownloadURL();
   }
 
