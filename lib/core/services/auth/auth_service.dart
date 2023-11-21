@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:desafio_flutter_capyba/core/models/user_atributes.dart';
-import 'package:desafio_flutter_capyba/core/services/auth/auth_mock_service.dart';
+import 'package:desafio_flutter_capyba/core/services/auth/auth_firebase_service.dart';
 
 abstract class AuthService {
   UserAtributes? get currentUser;
@@ -22,7 +22,7 @@ abstract class AuthService {
   Future<void> logout();
 
   factory AuthService() {
-    return AuthMockService();
-    //return AuthFirebaseService();
+    //return AuthMockService();
+    return AuthFirebaseService();
   }
 }
