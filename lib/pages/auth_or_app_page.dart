@@ -4,28 +4,35 @@ import 'package:desafio_flutter_capyba/pages/auth_page.dart';
 import 'package:desafio_flutter_capyba/pages/home_page.dart';
 import 'package:desafio_flutter_capyba/pages/loading_page.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-class AuthOrAppPage extends StatefulWidget {
+class AuthOrAppPage extends StatelessWidget {
   const AuthOrAppPage({super.key});
 
-  @override
-  State<AuthOrAppPage> createState() => _AuthOrAppPageState();
-}
+  Future<void> init(BuildContext context) async {
+    await Firebase.initializeApp();
+  }
 
-class _AuthOrAppPageState extends State<AuthOrAppPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: StreamBuilder<UserAtributes?>(
-        stream: AuthService().userChanges,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const LoadingPage();
-          } else {
-            return snapshot.hasData ? HomePage() : const AuthPage();
-          }
-        },
-      ),
+    return FutureBuilder(
+      future: init(context),
+      builder: (ctx, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const LoadingPage();
+        } else {
+          return StreamBuilder<UserAtributes?>(
+            stream: AuthService().userChanges,
+            builder: (ctx, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const LoadingPage();
+              } else {
+                return snapshot.hasData ? const HomePage() : const AuthPage();
+              }
+            },
+          );
+        }
+      },
     );
   }
 }
