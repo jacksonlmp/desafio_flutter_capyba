@@ -1,16 +1,37 @@
-# desafio_flutter_capyba
+# Desafio Flutter Capyba
 
-A new Flutter project.
+Este desafio consiste em desenvolver um app utilizando Flutter com Firebase.
 
-## Getting Started
+Exigências: 
+- Cadastro e login via e-mail
+- Selfie de usuário
+- Preferências de usuário
+- Home Page
+- Meu Perfil
+- Confirmação de e-mail
 
-This project is a starting point for a Flutter application.
+Bônus:
+- Login via google
 
-A few resources to get you started if this is your first Flutter project:
+## Pré-requisitos
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Certifique-se de ter o Flutter e o Dart instalados em sua máquina. Para obter informações sobre como instalar o Flutter, consulte [a documentação oficial do Flutter](https://flutter.dev/docs/get-started/install).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Instalação
+
+1. Clone este repositório:
+
+   ```bash
+   git clone https://github.com/jacksonlmp/desafio_flutter_capyba.git
+
+2. Navegue até o diretório do projeto:
+
+    ```bash
+    cd desafio_flutter_capyba
+
+3. Instale as dependências:
+
+    ```bash
+    flutter pub get
+
+##
