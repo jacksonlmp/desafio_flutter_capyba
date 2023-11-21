@@ -38,21 +38,22 @@ class _UserImagePickerState extends State<UserImagePicker> {
           backgroundImage: _image != null ? FileImage(_image!) : null,
         ),
         TextButton(
-            onPressed: _pickImage,
-            child: const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.image,
-                  color: Colors.green,
-                ),
-                SizedBox(width: 10),
-                Text(
-                  'Adicionar Imagem',
-                  style: TextStyle(color: Colors.green),
-                )
-              ],
-            ))
+          onPressed: _pickImage,
+          child: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.image,
+                color: Colors.green,
+              ),
+              SizedBox(width: 10),
+              Text(
+                'Adicionar Imagem',
+                style: TextStyle(color: Colors.green),
+              )
+            ],
+          ),
+        )
       ],
     );
   }

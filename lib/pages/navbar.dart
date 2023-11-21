@@ -3,6 +3,8 @@ import 'package:desafio_flutter_capyba/core/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class NavBar extends StatelessWidget {
+  const NavBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -31,8 +33,8 @@ class NavBar extends StatelessWidget {
             title: Text('Verificação de e-mail'),
           ),
           ListTile(
-            leading: Icon(Icons.login),
-            title: Text('Sair da conta'),
+            leading: const Icon(Icons.login),
+            title: const Text('Sair da conta'),
             onTap: () => AuthService().logout(),
           ),
         ],

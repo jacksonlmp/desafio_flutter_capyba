@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      drawer: NavBar(),
+      drawer: const NavBar(),
       body: const Center(
         child: Text('Conteúdo da Homepage'),
       ),

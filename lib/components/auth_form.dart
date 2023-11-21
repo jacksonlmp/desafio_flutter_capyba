@@ -22,10 +22,12 @@ class _AuthFormState extends State<AuthForm> {
   }
 
   void _showError(String msg) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(msg),
-      backgroundColor: Theme.of(context).colorScheme.error,
-    ));
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(msg),
+        backgroundColor: Theme.of(context).colorScheme.error,
+      ),
+    );
   }
 
   void _submit() {
@@ -113,17 +115,18 @@ class _AuthFormState extends State<AuthForm> {
                 ),
               ),
               TextButton(
-                  onPressed: () {
-                    setState(() {
-                      _formData.toggleAuthMode();
-                    });
-                  },
-                  child: Text(
-                    _formData.isLogin
-                        ? 'Criar uma nova conta?'
-                        : 'Já possui conta?',
-                    style: const TextStyle(color: Colors.green),
-                  ))
+                onPressed: () {
+                  setState(() {
+                    _formData.toggleAuthMode();
+                  });
+                },
+                child: Text(
+                  _formData.isLogin
+                      ? 'Criar uma nova conta?'
+                      : 'Já possui conta?',
+                  style: const TextStyle(color: Colors.green),
+                ),
+              )
             ],
           ),
         ),
